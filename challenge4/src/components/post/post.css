@@ -1,0 +1,45 @@
+.post-container {
+  background: #fff;
+  
+  padding: 20px;
+  margin: auto;
+  margin-top: 20px;
+
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.14);
+
+  max-width: 700px;
+  min-width: 360px;
+}
+
+.post {
+  color: black;
+}
+
+.author {
+  display: flex;
+}
+
+.post-date {
+  font-size: 0.8rem;
+  color: #9a9a9a;
+  margin: 0;
+  margin-top: 5px;
+}
+
+.post-logo {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+
+  padding: 0;
+  margin-right: 20px;
+}
+
+.divider{
+  height: 1px;
+  width: 98%;
+  background: #eee;
+
+  margin: 20px 0;
+}

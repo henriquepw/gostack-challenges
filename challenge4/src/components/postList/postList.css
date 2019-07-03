@@ -1,0 +1,8 @@
+.postList-container {
+  display: relative;
+
+  padding: 0 40px;
+  box-sizing: border-box;
+
+  min-width: 360px;
+}

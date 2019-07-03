@@ -1,0 +1,43 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 80px;
+  background: #4A90E2;
+
+  padding: 0 40px;
+  min-width: 360px;
+}
+
+.context {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 1024px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.profile:hover {
+  cursor: pointer;
+}
+
+img {
+  height: 40px;
+  width: 40px;
+  color: #fff;
+  padding: 8px;
+}
+
+.profile > img {
+  height: 30px;
+  width: 30px;
+}
