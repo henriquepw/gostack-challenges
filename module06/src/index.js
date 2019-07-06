@@ -1,13 +1,15 @@
-import React, { Fragment } from 'react';
-import { Text } from 'react-native';
+import React from 'react';
+import { StatusBar } from 'react-native';
 
 import './config/ReactotronConfig';
+import Routes from './routes';
 
 const App = () => {
   return (
-    <Fragment>
-      <Text>HEllO</Text>
-    </Fragment>
+    <>
+      <StatusBar barStyle="light-content" backgroundColor="#7159c1" />
+      <Routes />
+    </>
   );
 };
 
