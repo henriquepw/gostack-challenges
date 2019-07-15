@@ -1,4 +1,0 @@
-#Sun Jul 14 21:43:19 BRT 2019
-base.0=/home/henrique/Git/bootcamp-gostack/challenge07_08/android/app/build/intermediates/transforms/dexMerger/debug/0
-path.0=classes.dex
-renamed.0=classes.dex
