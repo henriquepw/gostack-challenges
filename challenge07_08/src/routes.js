@@ -3,7 +3,7 @@ import { createAppContainer, createStackNavigator } from 'react-navigation';
 
 import Home from './pages/home';
 import Cart from './pages/cart';
-import Header from './compoments/header';
+import Header from './components/header';
 
 const Routes = createAppContainer(
   createStackNavigator(

@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import AntIcon from 'react-native-vector-icons/AntDesign';
@@ -29,9 +28,24 @@ import {
   Subtotal,
 } from './styles';
 
-function Cart({ cart, total, updateAmountRequest, removeFromCart }) {
+function Cart() {
+  const cart = useSelector(state =>
+    state.cart.map(product => ({
+      ...product,
+      subtotal: formatPrice(product.price * product.amount),
+    }))
+  );
+
+  const total = useSelector(state =>
+    formatPrice(
+      state.cart.reduce((final, next) => final + next.price * next.amount, 0)
+    )
+  );
+
+  const dispatch = useDispatch();
+
   function increment(product, qtd = 1) {
-    updateAmountRequest(product.id, product.amount + qtd);
+    dispatch(CartActions.updateAmountRequest(product.id, product.amount + qtd));
   }
 
   return (
@@ -47,7 +61,9 @@ function Cart({ cart, total, updateAmountRequest, removeFromCart }) {
                 <ProductTitle>{item.title}</ProductTitle>
                 <ProductPrice>{item.priceFormatted}</ProductPrice>
               </ProductView>
-              <RemoveButton onPress={() => removeFromCart(item.id)}>
+              <RemoveButton
+                onPress={() => dispatch(CartActions.removeFromCart(item.id))}
+              >
                 <MaterialIcon
                   name="remove-shopping-cart"
                   size={20}
@@ -81,20 +97,4 @@ function Cart({ cart, total, updateAmountRequest, removeFromCart }) {
   );
 }
 
-const mapStateToProps = state => ({
-  cart: state.cart.map(product => ({
-    ...product,
-    subtotal: formatPrice(product.amount * product.price),
-  })),
-  total: formatPrice(
-    state.cart.reduce((total, next) => total + next.amount * next.price, 0)
-  ),
-});
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(CartActions, dispatch);
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Cart);
+export default Cart;
