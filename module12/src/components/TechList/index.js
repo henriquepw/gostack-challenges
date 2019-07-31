@@ -1,25 +1,41 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 // import { Container } from './styles';
+import { addTech } from '~/store/modules/techs/actions';
 
 export default function TechList() {
-  const [techs, setTechs] = useState([]);
+  const [newTech, setNewTech] = useState('');
 
-  function handleAddTech() {
-    setTechs([...techs, 'Node.js']);
+  const dispatch = useDispatch();
+  const techs = useSelector(state => state.techs);
+
+  function handleAddTech(e) {
+    e.preventDefault();
+
+    dispatch(addTech(newTech));
+    setNewTech('');
   }
 
   return (
-    <div>
+    <form data-testid="tech-form" onSubmit={handleAddTech}>
       <ul data-testid="tech-list">
         {techs.map(tech => (
           <li key={tech}>{tech}</li>
         ))}
       </ul>
 
-      <button type="button" onClick={handleAddTech}>
+      <label htmlFor="tech">Tech</label>
+
+      <input
+        id="tech"
+        value={newTech}
+        onChange={e => setNewTech(e.target.value)}
+      />
+
+      <button type="submit" onClick={handleAddTech}>
         Adicionar
       </button>
-    </div>
+    </form>
   );
 }

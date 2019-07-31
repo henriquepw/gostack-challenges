@@ -1,11 +1,9 @@
 import React from 'react';
 
+import TechList from './components/TechList';
+
 function App() {
-  return (
-    <div>
-      
-    </div>
-  );
+  return <TechList />;
 }
 
 export default App;
